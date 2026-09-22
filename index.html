@@ -118,7 +118,32 @@
   #layer-bag      { z-index: 60; }
   #layer-acs      { z-index: 70; }
   #layer-hat      { z-index: 80; }
-
+/* --- スマホ対応（レスポンシブ化）のための魔法のルール --- */
+  @media (max-width: 900px) {
+    .app-container {
+      flex-direction: column; /* 横並びを縦並びに変更 */
+      align-items: center;    /* 中央揃え */
+    }
+    
+    .control-area {
+      width: 100%;            /* 横幅を画面いっぱいに */
+      max-width: 400px;       /* プレビュー画面と同じ最大幅に制限 */
+      box-sizing: border-box; /* 余白のはみ出し防止 */
+    }
+    
+    .preview-area {
+      width: 100%;            /* スマホの画面幅に合わせる */
+      max-width: 400px;
+      /* 高さは横幅に合わせて自動縮小（アスペクト比固定） */
+      height: auto;           
+      aspect-ratio: 400 / 600; 
+      order: -1;              /* プレビュー（ドール）を一番上に表示！ */
+    }
+    
+    h1 {
+      font-size: 20px;        /* スマホ向けにタイトルの文字を少し小さく */
+    }
+  }
 </style>
 </head>
 <body>
